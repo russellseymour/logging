@@ -39,7 +39,11 @@ function Set-Message {
 			# if there are results add the information tot heline
 			if ($results.count -gt 0 -and ($prependString = $results[0]) -is [System.String])
 			{
-				$line = "{0} - {1} - {2} - {3}" -f $prependString, $structure.severity, $structure.eventid, $line
+				if ([String]::IsNullOrEmpty($formatting.tag)) {
+					$line = "{0} - {1} - {2} - {3}" -f $prependString, $structure.severity, $structure.eventid, $line
+				} else {
+					$line = "{0} - {1} - {2} - {3} - {4}" -f $prependString, $structure.severity, $structure.eventid, $formatting.tag, $line
+				}
 			}
 		}
 

@@ -36,7 +36,7 @@ function Write-Log {
 		# variable to hold extra information to be added to the message
 		# this is how default messages can be enchances
 		$extra = $false,
-
+		
 #region Write-Host Parameters
 
 		[Parameter(ParameterSetName="Host")]
@@ -185,6 +185,12 @@ function Write-Log {
 		}
 		$provider_paths += "{0}\providers" -f $module_path
 
+		# determine if a tag has been specified in the session
+		if (![String]::IsNullOrEmpty($script:Logging.tag)) {
+			$logtag = $script:Logging.tag
+		} elseif (![String]::IsNullOrEmpty($LogTagPreference)) {
+			$logtag = $LogTagPreference
+		}
 
     }
 
@@ -194,7 +200,7 @@ function Write-Log {
 		$resource = Load-Help -Path $resource
 
 		# Find the message from the eventid and return as a message object
-		$msg, $formatting = Get-HelpMessage -EventId $EventId -Resource $resource -Message $Object -ForegroundColor $ForegroundColor -BackgroundColor $BackgroundColor -Prepend $Prepend
+		$msg, $formatting = Get-HelpMessage -EventId $EventId -Resource $resource -Message $Object -ForegroundColor $ForegroundColor -BackgroundColor $BackgroundColor -Prepend $Prepend -Tag $logtag
 
 		# Get the message structure to work with
 		$structure = Format-Message -Level $level -EventId $EventId -Message $msg -Severity $severity

@@ -42,7 +42,10 @@ function Get-HelpMessage {
 
 		# Ensure that the colours from the calling function are pulled in
 		$ForegroundColor,
-		$BackgroundColor
+		$BackgroundColor,
+
+		# the log tag that has been supplied
+		$tag
 
 	)
 
@@ -57,6 +60,7 @@ function Get-HelpMessage {
 		foregroundcolor = $ForegroundColor
 		backgroundcolor = $BackgroundColor
 		prepend = $prepend
+		tag = $tag
 	}
 
     if ($resource -ne $false) {

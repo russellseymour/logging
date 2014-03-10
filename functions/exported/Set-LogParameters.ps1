@@ -57,6 +57,11 @@ function Set-LogParameters {
 		# If not set this item will not appear in the logging object
 		$custom = $false,
 
+		[Parameter(ParameterSetName="switches")]
+		# Tag
+		# Tag that should be prepended to any log messahe
+		$tag,
+
 		[Parameter(ParameterSetName="object")]
 		# Parameters
 		# This is an object that contains all of the settings that need to be defined in the module
@@ -114,6 +119,11 @@ function Set-LogParameters {
 			# Set a user attribute that can be set by parameters
 			if (!($Logging.ContainsKey("custom")) -and $custom -ne $false) {
 				$Logging.custom = $custom
+			}
+
+			# Add the tag to the sessting
+			if (!($Logging.ContainsKey("tag")) -and ![String]::IsNullOrEmpty($tag)) {
+				$Logging.tag = $tag
 			}
 
 		}
