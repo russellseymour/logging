@@ -20,13 +20,13 @@ This is still being developed, but the main features are:
     - Capture the message from any 'Write-*Log' function and process it as required
     - Set an XML file as the resource to extract messages from using an EventId
     - Process all messages as an object by calling 'Get-Messages' - useful to send to a different location such as Elastic Search.
+    - Set a Tag to be applied to all messages that are logged - this does not apply to messages that are displayed on screen.
 
 ## To Do
 
 The following is a list of the things that are left to do, but it is probably not exhaustive:
 
     - Not all the 'Write-' commands are supported yet.  Only Write-Host and Write-Verbose are
-    - Add ability to add a global parameter for a log tag or prefix
     - Log levels are currently linked to the appropriate 'Write-' command, however there maybe times when the 'Write-Host' function is required but with a different level and therefore differnt colour coding.
     - Add comment based help to all the exported functions
 
