@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Logging
 
 One of the issues with PowerShell's built in 'Write-' commands is that it is not easy to capture the output from them and then parse that log.  So if, for example, there was the following code in a script:
